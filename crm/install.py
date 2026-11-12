@@ -713,5 +713,22 @@ def configure_white_labeling():
 			if hasattr(ss, "app_name") and ss.app_name != "Nayfaaro CRM":
 				ss.app_name = "Nayfaaro CRM"
 				ss.save(ignore_permissions=True)
+
+		# Seed white-label translations to override any upstream framework strings
+		if frappe.db.exists("DocType", "Translation"):
+			translations = [
+				("Welcome to Frappe CRM", "Welcome to Nayfaaro CRM"),
+				("Frappe CRM mobile", "Nayfaaro CRM mobile"),
+				("How many people will use Frappe CRM?", "How many people will use Nayfaaro CRM?"),
+				("You do not have permission to access Frappe CRM", "You do not have permission to access Nayfaaro CRM"),
+			]
+			for src, trans in translations:
+				if not frappe.db.exists("Translation", {"source_text": src, "language": "en"}):
+					frappe.get_doc({
+						"doctype": "Translation",
+						"language": "en",
+						"source_text": src,
+						"translated_text": trans,
+					}).insert(ignore_permissions=True)
 	except Exception:
 		frappe.log_error("Failed to apply Nayfaaro white-label settings")
