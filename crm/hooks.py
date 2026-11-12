@@ -1,14 +1,20 @@
 import frappe
 
 app_name = "crm"
-app_title = "Frappe CRM"
-app_publisher = "Frappe Technologies Pvt. Ltd."
-app_description = "Kick-ass Open Source CRM"
-app_email = "shariq@frappe.io"
+app_title = "Nayfaaro CRM"
+app_publisher = "Nayfaaro"
+app_description = "Nayfaaro CRM - Modern Sales Operations"
+app_email = "support@nayfaro.com"
 app_license = "AGPLv3"
 app_icon_url = "/assets/crm/images/logo.svg"
-app_icon_title = "CRM"
+app_icon_title = "Nayfaaro CRM"
 app_icon_route = "/crm"
+app_logo_url = "/assets/crm/images/logo.svg"
+
+website_context = {
+	"favicon": "/assets/crm/images/logo.svg",
+	"splash_image": "/assets/crm/images/logo.svg",
+}
 
 # Apps
 # ------------------
@@ -18,7 +24,7 @@ add_to_apps_screen = [
 	{
 		"name": "crm",
 		"logo": "/assets/crm/images/logo.svg",
-		"title": "CRM",
+		"title": "Nayfaaro CRM",
 		"route": "/crm",
 		"has_permission": "crm.api.check_app_permission",
 	}
@@ -451,13 +457,6 @@ standard_dropdown_items = [
 		"label": "Settings",
 		"type": "Route",
 		"icon": "settings",
-		"route": "#",
-		"is_standard": 1,
-	},
-	{
-		"name1": "login_to_fc",
-		"label": "Login to Frappe Cloud",
-		"type": "Route",
 		"route": "#",
 		"is_standard": 1,
 	},
