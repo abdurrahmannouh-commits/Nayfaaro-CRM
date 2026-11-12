@@ -10,38 +10,38 @@ from frappe.custom.doctype.custom_field.custom_field import create_custom_fields
 def setup_realestate():
 	"""
 	Configures Real Estate custom fields and layout for the current tenant site
-	(e.g. cuud.nayfaro.com).
+	(e.g. cuud.nayfaro.com). English language only.
 	"""
 	custom_fields = {
 		"CRM Lead": [
 			{
 				"fieldname": "client_purpose",
-				"label": "Danta Macmiilka (Purpose)",
+				"label": "Purpose",
 				"fieldtype": "Select",
-				"options": "\nIibinaya (Selling Property)\nIibsanaya (Buying Property)\nKireysanaya (Looking for Rent)\nKireynaya (Offering Property for Rent)",
+				"options": "\nSelling Property\nBuying Property\nLooking for Rent\nOffering for Rent",
 				"insert_after": "mobile_no",
 				"in_list_view": 1,
 				"in_standard_filter": 1,
 			},
 			{
 				"fieldname": "property_type",
-				"label": "Nooca Hantida (Property Type)",
+				"label": "Property Type",
 				"fieldtype": "Select",
-				"options": "\nDhul / Boos (Land)\nGuri Dabaq ah (Villa / Apartment)\nGuri Caadi ah (Townhouse)\nGanacsi / Xafiis / Bakhaar (Commercial)",
+				"options": "\nLand / Plot\nHouse / Villa\nApartment\nCommercial / Office",
 				"insert_after": "client_purpose",
 				"in_list_view": 1,
 				"in_standard_filter": 1,
 			},
 			{
 				"fieldname": "budget_or_price",
-				"label": "Miisaaniyadda / Qiimaha ($)",
+				"label": "Budget / Price",
 				"fieldtype": "Currency",
 				"insert_after": "property_type",
 				"in_list_view": 1,
 			},
 			{
 				"fieldname": "preferred_location",
-				"label": "Xaafadda / Goobta (Location)",
+				"label": "Location",
 				"fieldtype": "Data",
 				"insert_after": "budget_or_price",
 				"in_list_view": 1,
@@ -49,7 +49,7 @@ def setup_realestate():
 			},
 			{
 				"fieldname": "property_details",
-				"label": "Faahfaahinta Hantida (Property Details)",
+				"label": "Property Details / Notes",
 				"fieldtype": "Small Text",
 				"insert_after": "preferred_location",
 			},
@@ -57,24 +57,24 @@ def setup_realestate():
 		"CRM Deal": [
 			{
 				"fieldname": "client_purpose",
-				"label": "Nooca Heshiiska (Deal Type)",
+				"label": "Deal Type",
 				"fieldtype": "Select",
-				"options": "\nIib (Property Sale)\nKiro (Rental)",
+				"options": "\nProperty Sale\nRental",
 				"insert_after": "deal_owner",
 				"in_list_view": 1,
 				"in_standard_filter": 1,
 			},
 			{
 				"fieldname": "property_type",
-				"label": "Nooca Hantida (Property Type)",
+				"label": "Property Type",
 				"fieldtype": "Select",
-				"options": "\nDhul / Boos (Land)\nGuri Dabaq ah (Villa / Apartment)\nGuri Caadi ah (Townhouse)\nGanacsi / Xafiis / Bakhaar (Commercial)",
+				"options": "\nLand / Plot\nHouse / Villa\nApartment\nCommercial / Office",
 				"insert_after": "client_purpose",
 				"in_list_view": 1,
 			},
 			{
 				"fieldname": "property_location",
-				"label": "Xaafadda / Goobta",
+				"label": "Location",
 				"fieldtype": "Data",
 				"insert_after": "property_type",
 			},
@@ -84,7 +84,7 @@ def setup_realestate():
 	create_custom_fields(custom_fields, update=True)
 
 	# Configure Quick Entry Layout for CRM Lead
-	# Clean, professional Real Estate layout without B2B clutter
+	# Clean, professional Real Estate layout in English without B2B clutter
 	lead_quick_entry_layout = [
 		{
 			"name": "contact_section",
@@ -147,4 +147,4 @@ def setup_realestate():
 	frappe.db.commit()
 	frappe.clear_cache(doctype="CRM Lead")
 	frappe.clear_cache(doctype="CRM Deal")
-	return "Real Estate customization applied successfully!"
+	return "Real Estate customization applied successfully in English!"
