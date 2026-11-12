@@ -17,7 +17,7 @@
           <div
             class="url mx-auto flex h-6 w-60 items-center justify-center gap-1.5 rounded-full text-xs text-ink-gray-5"
           >
-            <LockIcon class="size-3" />acme.frappe.cloud
+            <LockIcon class="size-3" />crm.nayfaaro.com
           </div>
           <Sk w="14px" /><Sk w="14px" />
           <span class="loadbar absolute -bottom-px left-0 h-0.5" />

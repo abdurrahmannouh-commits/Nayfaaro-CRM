@@ -7,14 +7,6 @@
           <h2 class="flex text-2xl-semibold leading-none h-5">
             {{ __('Forms') }}
           </h2>
-          <Tooltip :text="__('View documentation')">
-            <a
-              href="https://docs.frappe.io/crm/capturing-leads/web-form"
-              target="_blank"
-            >
-              <LucideCircleQuestionMark class="h-4 w-4 text-ink-gray-6" />
-            </a>
-          </Tooltip>
         </div>
         <p class="text-p-base text-ink-gray-6">
           {{

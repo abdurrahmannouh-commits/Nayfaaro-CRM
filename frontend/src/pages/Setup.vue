@@ -44,7 +44,7 @@
       <SetupTelemetryConsent class="mb-3" />
       <footer class="flex items-center gap-2 text-sm text-ink-gray-5">
         <CRMLogo class="size-4" />
-        Frappe CRM
+        Nayfaaro CRM
       </footer>
     </section>
     <SetupPreview
@@ -203,7 +203,7 @@ async function markSetupDone() {
   }
 }
 
-usePageMeta(() => ({ title: __('Set up Frappe CRM') }))
+usePageMeta(() => ({ title: __('Set up Nayfaaro CRM') }))
 </script>
 
 <style scoped>

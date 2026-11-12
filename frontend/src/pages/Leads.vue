@@ -248,7 +248,6 @@
       )
     "
     :filtered="!!Object.keys(leads.params?.filters || {}).length"
-    docsLink="https://docs.frappe.io/crm/lead"
     importDoctype="CRM Lead"
     @create="showLeadModal = true"
   />
