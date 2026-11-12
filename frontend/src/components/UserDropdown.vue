@@ -21,7 +21,7 @@
           "
         >
           <div class="text-base-medium leading-none text-ink-gray-9 truncate">
-            {{ __(brand.name || 'CRM') }}
+            {{ __(brand.name || 'Nayfaaro CRM') }}
           </div>
           <div class="mt-1 text-sm leading-none text-ink-gray-7 truncate">
             {{ user.full_name }}
@@ -146,19 +146,10 @@ function getStandardItem(item) {
         condition: () => !isMobileView.value,
       }
     case 'login_to_fc':
-      if (canManageBilling) {
-        return {
-          icon: markRaw(CreditCardIcon),
-          label: __('Manage Billing'),
-          onClick: () => openBilling(),
-          condition: () => !isMobileView.value,
-        }
-      }
       return {
         icon: h(FrappeCloudIcon),
         label: __(item.label),
-        onClick: () => confirmLoginToFrappeCloud(),
-        condition: () => !isMobileView.value && window.is_fc_site,
+        condition: () => false,
       }
     case 'about':
       return {
@@ -188,7 +179,7 @@ function appMenuItems() {
 function deskApp() {
   return {
     name: 'frappe',
-    logo: '/assets/frappe/images/framework.png',
+    logo: '/assets/crm/images/logo.svg',
     title: __('Desk'),
     route: '/desk',
   }

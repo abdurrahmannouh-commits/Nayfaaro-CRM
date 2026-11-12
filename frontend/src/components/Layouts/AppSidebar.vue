@@ -120,12 +120,7 @@
               :isSidebarCollapsed="isCollapsed"
               :afterSignup="() => capture('signup_from_demo_site')"
             />
-            <TrialBanner
-              v-if="isFCSite && !isCloudSettingsAvailable()"
-              :isSidebarCollapsed="isCollapsed"
-              :afterUpgrade="() => capture('upgrade_plan_from_trial_banner')"
-            />
-            <TrialCard v-if="!isCollapsed" />
+            <!-- Frappe Cloud Trial promo hidden for white-labeling -->
             <GettingStartedBanner
               v-if="!isOnboardingStepsCompleted"
               :isSidebarCollapsed="isCollapsed"
@@ -178,7 +173,6 @@
       :afterSkipAll="() => capture('onboarding_steps_skipped')"
       :afterReset="(step) => capture('onboarding_step_reset_' + step)"
       :afterResetAll="() => capture('onboarding_steps_reset')"
-      docsLink="https://docs.frappe.io/crm"
     />
     <IntermediateStepModal
       v-model="showIntermediateModal"
@@ -685,7 +679,7 @@ const articles = ref([
     ],
   },
   {
-    title: __('Frappe CRM mobile'),
+    title: __('Nayfaaro CRM mobile'),
     opened: false,
     subArticles: [
       { name: 'mobile-app-installation', title: __('Mobile App Installation') },
