@@ -47,19 +47,15 @@
 
 <script setup>
 import BrandLogo from '@/components/BrandLogo.vue'
-import FrappeCloudIcon from '@/components/Icons/FrappeCloudIcon.vue'
 import AppsIcon from '@/components/Icons/AppsIcon.vue'
 import { sessionStore } from '@/stores/session'
 import { usersStore } from '@/stores/users'
 import { getSettings } from '@/stores/settings'
 import { showSettings, isMobileView } from '@/composables/settings'
 import { showAboutModal } from '@/composables/modals'
-import { confirmLoginToFrappeCloud } from '@/composables/frappecloud'
-import { useCloudSettings } from '@/composables/cloudSettings'
-import CreditCardIcon from '~icons/lucide/credit-card'
 import { spriteIcon } from '@/utils/spriteIcon'
 import { createResource, Dropdown } from 'frappe-ui'
-import { computed, h, markRaw } from 'vue'
+import { computed, markRaw } from 'vue'
 
 defineProps({
   isCollapsed: { type: Boolean, default: false },
@@ -67,7 +63,6 @@ defineProps({
 
 const { settings, brand } = getSettings()
 const { logout } = sessionStore()
-const { available: canManageBilling, open: openBilling } = useCloudSettings()
 const { getUser } = usersStore()
 
 const user = computed(() => getUser() || {})
@@ -147,8 +142,6 @@ function getStandardItem(item) {
       }
     case 'login_to_fc':
       return {
-        icon: h(FrappeCloudIcon),
-        label: __(item.label),
         condition: () => false,
       }
     case 'about':

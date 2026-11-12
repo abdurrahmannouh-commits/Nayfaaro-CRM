@@ -223,9 +223,6 @@ import {
 import { useBroadcast } from '@/composables/useBroadcast.js'
 import { call, Sidebar, SidebarItem, SidebarLabel, Tooltip } from 'frappe-ui'
 import { SignupBanner } from '@framework/ui/components/SignupBanner'
-import { TrialBanner } from '@framework/ui/components/TrialBanner'
-import TrialCard from '@/components/Layouts/TrialCard.vue'
-import { isCloudSettingsAvailable } from '@/composables/cloudSettings'
 import {
   HelpModal,
   GettingStartedBanner,

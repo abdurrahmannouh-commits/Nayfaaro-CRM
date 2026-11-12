@@ -6,7 +6,6 @@ from frappe import _, get_installed_apps
 from frappe.integrations.frappe_providers.frappecloud_billing import is_fc_site
 from frappe.translate import get_messages_for_boot, get_translated_doctypes
 from frappe.utils import cint, get_system_timezone
-from frappe.utils.telemetry import capture
 
 from crm.automation.events import HAS_AUTOMATION_ENGINE
 
