@@ -267,7 +267,7 @@ const TOAST = {
   leads: '21 leads imported',
   team: 'Invite sent to Ria',
 }
-const PROVIDERS = ['Gmail', 'Outlook', 'Frappe Mail', 'Yahoo']
+const PROVIDERS = ['Gmail', 'Outlook', 'Custom Mail', 'Yahoo']
 const INVITE = 'ria.kapoor@acme.com'
 
 const journey = computed(() => props.fx.includes('journey'))

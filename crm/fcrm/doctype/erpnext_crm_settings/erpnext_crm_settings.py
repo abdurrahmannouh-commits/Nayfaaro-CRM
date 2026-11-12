@@ -156,8 +156,8 @@ class ERPNextCRMSettings(Document):
 			frappe.msgprint(
 				_(
 					"Could not create the Nayfaaro CRM custom fields on {0} automatically. "
-					"If it is running the latest ERPNext, enable <b>Frappe CRM Data Synchronization</b> "
-					"in its CRM Settings, Otherwise check the Error Log."
+					"If it is running the latest ERPNext, enable <b>CRM Data Synchronization</b> "
+					"in its CRM Settings, otherwise check the Error Log."
 				).format(self.erpnext_site_url),
 				title=_("ERPNext custom fields not created"),
 				indicator="orange",

@@ -36,6 +36,7 @@ def after_install(force=False):
 	create_assignment_rule_custom_fields()
 	add_assignment_rule_property_setters()
 	seed_default_rules_and_mappings()
+	configure_white_labeling()
 	frappe.db.commit()  # persist seeded defaults, also run from restore_defaults  # nosemgrep
 
 
@@ -679,3 +680,38 @@ def create_assignment_rule_custom_fields():
 		)
 
 		frappe.clear_cache(doctype="Assignment Rule")
+
+
+def configure_white_labeling():
+	"""Ensures Desk, Login, and Website branding use Nayfaaro defaults."""
+	try:
+		if frappe.db.exists("DocType", "Website Settings"):
+			ws = frappe.get_doc("Website Settings", "Website Settings")
+			updated = False
+			for attr, val in [
+				("app_name", "Nayfaaro CRM"),
+				("app_logo", "/assets/crm/images/logo.svg"),
+				("favicon", "/assets/crm/images/logo.svg"),
+				("splash_image", "/assets/crm/images/logo.svg"),
+				("hide_footer_powered_by", 1),
+				("copyright", "Nayfaaro"),
+			]:
+				if hasattr(ws, attr) and getattr(ws, attr) != val:
+					setattr(ws, attr, val)
+					updated = True
+			if updated:
+				ws.save(ignore_permissions=True)
+
+		if frappe.db.exists("DocType", "Navbar Settings"):
+			ns = frappe.get_doc("Navbar Settings", "Navbar Settings")
+			if hasattr(ns, "app_logo") and ns.app_logo != "/assets/crm/images/logo.svg":
+				ns.app_logo = "/assets/crm/images/logo.svg"
+				ns.save(ignore_permissions=True)
+
+		if frappe.db.exists("DocType", "System Settings"):
+			ss = frappe.get_doc("System Settings", "System Settings")
+			if hasattr(ss, "app_name") and ss.app_name != "Nayfaaro CRM":
+				ss.app_name = "Nayfaaro CRM"
+				ss.save(ignore_permissions=True)
+	except Exception:
+		frappe.log_error("Failed to apply Nayfaaro white-label settings")

@@ -78,10 +78,10 @@ export const popularProviderFields = [
 export const customProviderFields = [
   ...fixedFields,
   {
-    label: __('Frappe Mail Site'),
+    label: __('Mail Server URL'),
     name: 'frappe_mail_site',
     type: 'text',
-    placeholder: 'https://frappemail.com',
+    placeholder: 'https://mail.example.com',
   },
   {
     label: __('API Key'),
@@ -100,11 +100,12 @@ export const customProviderFields = [
 export const services = [
   {
     name: 'Frappe Mail',
+    label: __('Custom Mail Server'),
     icon: LogoFrappeMail,
     info: __(
-      'Setting up Frappe Mail requires you to have an API key and API secret for your email account. Read more',
+      'Setting up a custom mail relay requires you to have an API key and API secret for your email account.',
     ),
-    link: 'https://github.com/frappe/mail',
+    link: '',
     custom: true,
   },
   {

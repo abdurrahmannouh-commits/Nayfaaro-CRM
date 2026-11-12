@@ -14,7 +14,12 @@ app_logo_url = "/assets/crm/images/logo.svg"
 website_context = {
 	"favicon": "/assets/crm/images/logo.svg",
 	"splash_image": "/assets/crm/images/logo.svg",
+	"brand_html": "Nayfaaro CRM",
+	"copyright": "Nayfaaro",
+	"hide_footer_powered_by": 1,
 }
+
+default_mail_footer = """<div style="padding: 7px; text-align: right; color: #888"><small>Sent via <a href="https://nayfaro.com" target="_blank" style="color: #186D67">Nayfaaro CRM</a></small></div>"""
 
 # Apps
 # ------------------
@@ -39,11 +44,11 @@ require_type_annotated_api_methods = True
 # ------------------
 
 # include js, css files in header of desk.html
-# app_include_css = "/assets/crm/css/crm.css"
+app_include_css = "/assets/crm/css/nayfaaro.css"
 # app_include_js = "/assets/crm/js/crm.js"
 
 # include js, css files in header of web template
-# web_include_css = "/assets/crm/css/crm.css"
+web_include_css = "/assets/crm/css/nayfaaro.css"
 # web_include_js = "/assets/crm/js/crm.js"
 
 # include custom scss in every website theme (without file extension ".scss")
@@ -440,6 +445,7 @@ after_migrate = [
 	"crm.install.add_default_scripts",
 	"crm.install.add_web_form_custom_fields",
 	"crm.domain_enrichment.install.seed_default_rules_and_mappings",
+	"crm.install.configure_white_labeling",
 ]
 
 sqlite_search = ["crm.search_sqlite.CRMSearch"]

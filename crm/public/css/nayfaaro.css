@@ -1,0 +1,19 @@
+/* Nayfaaro CRM - Desk & Login White-Label Overrides */
+
+/* Hide any Powered by Frappe footers and badges */
+.powered-by,
+.footer-powered,
+.frappe-card .text-muted:has(a[href*="frappe.io"]),
+.login-content .text-muted:has(a[href*="frappe.io"]),
+a[href*="frappe.io"]:not(.allowed-link),
+a[href*="frappecloud.com"] {
+	display: none !important;
+}
+
+/* Ensure Nayfaaro logo displays crisply on login and desk headers */
+.page-card-head img,
+.navbar-brand img,
+.app-logo img {
+	max-height: 42px;
+	width: auto;
+}
