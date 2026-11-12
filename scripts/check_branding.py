@@ -57,6 +57,7 @@ IGNORED_PATHS = [
     ".git",
     "dist",
     "crm/locale",  # translation catalog files
+    "crm/install.py",  # database translation dictionary seeder
     "tests",
     "license.txt",
     "LICENSE",

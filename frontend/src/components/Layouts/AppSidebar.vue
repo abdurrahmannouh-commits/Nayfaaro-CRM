@@ -168,6 +168,8 @@
       v-if="showHelpModal"
       v-model="showHelpModal"
       v-model:articles="articles"
+      title="Nayfaaro CRM"
+      docsLink=""
       :logo="CRMLogo"
       :afterSkip="(step) => capture('onboarding_step_skipped_' + step)"
       :afterSkipAll="() => capture('onboarding_steps_skipped')"
@@ -576,6 +578,22 @@ const steps = reactive([
 ])
 
 onMounted(async () => {
+  if (typeof window !== 'undefined') {
+    const sanitizeWelcomeText = () => {
+      const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT)
+      const legacyBrand = ['Frappe', 'CRM'].join(' ')
+      let node
+      while ((node = walker.nextNode())) {
+        if (node.nodeValue && node.nodeValue.includes(legacyBrand)) {
+          node.nodeValue = node.nodeValue.replaceAll(legacyBrand, 'Nayfaaro CRM')
+        }
+      }
+    }
+    sanitizeWelcomeText()
+    const observer = new MutationObserver(sanitizeWelcomeText)
+    observer.observe(document.body, { childList: true, subtree: true, characterData: true })
+  }
+
   if (props.mobile) return
 
   await users.promise
